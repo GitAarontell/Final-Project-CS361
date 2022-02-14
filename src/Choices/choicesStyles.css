@@ -1,0 +1,56 @@
+.choicesContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 90%;
+    margin: 50px 0 50px 0;
+}
+
+.enter{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.internalContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 50%;
+    height: 100%;
+}
+
+input{
+    margin: 10px 0px 10px 50px;
+}
+
+label{
+    margin-left: 10px;
+    color: white;
+}
+
+.moodChoice{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-style: solid;
+    width: 400px;
+    height: 60px;
+    margin: 3px 0 0 0;
+    border-radius: 7px;
+}
