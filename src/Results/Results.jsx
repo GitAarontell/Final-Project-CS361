@@ -7,8 +7,8 @@ function Results({submit, images}) {
      <div className='resultsContainer'>
 
          {
-             images.map((pic) => {
-                 return <Image image={pic}></Image>
+             images.map((pic, i) => {
+                 return <Image image={pic} key={i}></Image>
              })
          }
 

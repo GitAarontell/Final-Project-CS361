@@ -6,7 +6,7 @@ function Choices({submit}) {
   return (
     <div className="choicesContainer">
 
-      <form classname="form" action="" method="GET">
+      <form className="form" action="" method="GET">
 
         <div className="internalContainer">
           <div className="moodChoice">
