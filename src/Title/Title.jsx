@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import './titleStyles.css';
 
 function Title() {
     return(
         <div className="titleContainer">
-            Mood Food
+            <Link style={{ textDecoration: 'none' }}to='/'>
+            <p>Mood Food</p>
+            </Link>
          </div>
     );
 }

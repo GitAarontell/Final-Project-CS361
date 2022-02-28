@@ -1,72 +1,35 @@
 import React from "react";
+
 import "./choicesStyles.css";
 
-function Choices({submit}) {
-
+function Choices({ submit, handleClick, changeMood }) {
   return (
     <div className="choicesContainer">
+      <div className="internalContainer">
+        <div onClick={() =>changeMood("Happy")} className="moodChoice">Happy</div>
 
-      <form className="form" action="" method="GET">
+        <div onClick={() =>changeMood("Angry")} className="moodChoice">Angry</div>
 
-        <div className="internalContainer">
-          <div className="moodChoice">
-            <input type="radio" id="happy" name="mood" value="happy" />
-            <label htmlFor="happy">Happy</label>
-          </div>
+        <div onClick={() =>changeMood("Confused")} className="moodChoice">Confused</div>
 
-          <div className="moodChoice">
-            <input type="radio" id="angry" name="mood" value="angry" />
-            <label htmlFor="angry">Angry</label>
-          </div>
+        <div onClick={() =>changeMood("Disconnected")} className="moodChoice">Disconnected</div>
 
-          <div className="moodChoice">
-            <input type="radio" id="confused" name="mood" value="confused" />
-            <label htmlFor="confused">Confused</label>
-          </div>
+        <div onClick={() =>changeMood("Sad")} className="moodChoice">Sad</div>
 
-          <div className="moodChoice">
-            <input
-              type="radio"
-              id="disconnected"
-              name="mood"
-              value="disconnected"
-            />
-            <label htmlFor="disconnected">Disconnected</label>
-          </div>
+        <div onClick={() =>changeMood("Scared")} className="moodChoice">Scared</div>
 
-          <div className="moodChoice">
-            <input type="radio" id="sad" name="mood" value="sad" />
-            <label htmlFor="sad">Sad</label>
-          </div>
+        <div onClick={() =>changeMood("Nervous")} className="moodChoice">Nervous</div>
 
-          <div className="moodChoice">
-            <input type="radio" id="scared" name="mood" value="scared" />
-            <label htmlFor="scared">Scared</label>
-          </div>
+        <div onClick={() =>changeMood("Bored")} className="moodChoice">Bored</div>
+      </div>
 
-          <div className="moodChoice">
-            <input type="radio" id="nervious" name="mood" value="nervious" />
-            <label htmlFor="nervious">Nervious</label>
-          </div>
+      <button onClick={submit}> Get Results </button>
 
-          <div className="moodChoice">
-            <input type="radio" id="bored" name="mood" value="bored" />
-            <label htmlFor="bored">Bored</label>
-          </div>
-        </div>
-
-        <button onClick={submit} type="submit"> Get Results </button>
-      </form>
+      <button className="mode" onClick={()=>handleClick}>
+        Mode
+      </button>
     </div>
   );
 }
 
 export default Choices;
-
-/*
-                {
-                    moods.map((mood, i) => {
-                        return <SingleChoice mood={mood} key={i}></SingleChoice>
-                    })
-                }
-*/

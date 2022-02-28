@@ -46,11 +46,17 @@ label{
 .moodChoice{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     border-style: solid;
     width: 400px;
     height: 60px;
     margin: 3px 0 0 0;
     border-radius: 7px;
+    color: white;
+    border-color: black;
+}
+
+.moodChoice:hover{
+    transform: scale(1.1);
 }
