@@ -1,45 +1,32 @@
+// import required libraries, componenets, and styles
 import React, { useState } from "react";
 import Title from "./Title/Title.jsx";
 import Results from "./Results/Results.jsx";
-import Choices from "./Choices/Choices.jsx";
+import Display from "./Display/Display.jsx";
 import {Route, useHistory } from "react-router-dom";
 import "./App.css";
 
+// main components that imports other components and holds state that is passed down to 
+// child components
 function App() {
+
+  // data state, sets mood data to be sent to server microservice 
   let [sendData, setData] = useState({
     data: "",
   });
+  // mode state, sets whether words or colors will be displayed
   let [modes, setModes] = useState(false);
-  let [images, setImages] = useState([
-    {
-      pic: "https://c.ndtvimg.com/2020-05/9iuj3h1g_indian-food_625x300_19_May_20.jpg",
-      price: 0,
-    },
-    {
-      pic: "https://www.wbcsd.org/var/site/storage/images/media/images/fresh_pa/80809-2-eng-GB/FRESH_PA_i1140.jpg",
-      price: 0,
-    },
-    {
-      pic: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2016/10/foodJointPainRelief-142336977-770x533-1.jpg",
-      price: 0,
-    },
-    {
-      pic: "https://www.ingredion.com/content/dam/ingredion/usca-images/food/meat/cheeseburger-bread_720x560.jpg",
-      price: 0,
-    },
-    {
-      pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYgv_7WcHGDMSb2j_ZbjdqXWr9s0UEumDMag&usqp=CAU",
-      price: 0,
-    },
-    {
-      pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX8TZ68TjvbXpv9rPwicqCPiilW5M9tTfrMQ&usqp=CAU",
-      price: 0,
-    },
-  ]);
+  // expand state, sets which selection will be scaled up when the user clicks on a choice
+  let [expand, setExpand] = useState(["", "", "", "", "", "", "", ""]);
+  // images state, used to hold data sent back by the server into an array with images and other information
+  let [images, setImages] = useState([]);
 
+  // used with react router to make react go back to a certain path, like changing a page
   const history = useHistory();
 
+  // handles when mode button is clicked and changes state based on what it was previously
   let handleClick = () => {
+
     if (modes) {
       setModes(false);
     } else {
@@ -47,14 +34,43 @@ function App() {
     }
   };
 
-  let changeMood = (mood) => {
+  // sets up the expand state so that the buttons will have the class on when they are clicked,
+  // then when another one is clicked, it will turn take off that class from the previous one and
+  // add it to the new one
+  let setExpandState = (num) => {
+    if (num === '1') {
+      setExpand(["on", "", "", "", "", "", "", ""]);
+    } else if (num === '2') {
+      setExpand(["", "on", "", "", "", "", "", ""]);
+    } else if (num === '3') {
+      setExpand(["", "", "on", "", "", "", "", ""]);
+    } else if (num === '4') {
+      setExpand(["", "", "", "on", "", "", "", ""]);
+    } else if (num === '5') {
+      setExpand(["", "", "", "", "on", "", "", ""]);
+    } else if (num === '6') {
+      setExpand(["", "", "", "", "", "on", "", ""]);
+    } else if (num === '7') {
+      setExpand(["", "", "", "", "", "", "on", ""]);
+    }  else if (num === '8') {
+      setExpand(["", "", "", "", "", "", "", "on"]);
+    }
+  }
+  // when a choice is clicked, data is set to the mood passed in
+  // and set expand is called which keeps the scaling on the selection
+  // so there is a response to clicking on the choice
+  let changeMood = (mood, e) => {
+
+    setExpandState(e.target.id)
     setData({
       data: mood,
     });
   };
 
+  // sends a request to microservice server, sets server response to data,
+  // then updates state images with that data, and changes page to show results
   let handleSubmit = async () => {
-    console.log("running");
+
     const response = await fetch("/info", {
       method: "POST",
       body: JSON.stringify(sendData),
@@ -66,22 +82,23 @@ function App() {
     setImages(data);
     history.push("/results");
   };
-
+  
+  // main app loads title, display and results components and puts them on different paths
   return (
     <div className="App">
       <Title></Title>
       <div className="center">
         <Route path="/" exact>
-          <Choices
-            submit={handleSubmit}
-            click={handleClick}
-            changeMood={changeMood}
-          ></Choices>
+
+          <Display mode={modes} submit={handleSubmit} changeMood={changeMood} expand={expand} click={handleClick}></Display>
+
         </Route>
 
         <Route path="/results">
           <Results obj={images} ></Results>
         </Route>
+
+
       </div>
     </div>
   );

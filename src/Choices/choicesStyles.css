@@ -55,8 +55,21 @@ label{
     border-radius: 7px;
     color: white;
     border-color: black;
+    background-color: rgb(78, 40, 40);
 }
 
 .moodChoice:hover{
     transform: scale(1.1);
+    cursor: pointer;
+}
+
+.on{
+    transform: scale(1.1);
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

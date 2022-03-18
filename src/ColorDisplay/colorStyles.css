@@ -1,0 +1,61 @@
+.moods{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    width: 400px;
+    height: 60px;
+    margin: 3px 0 0 0;
+    border-radius: 7px;
+    color: white;
+    border-color: black;
+}
+
+.moods:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.first{
+    background-color: rgb(153, 77, 153);
+}
+
+.second{
+    background-color: rgb(202, 80, 80);
+}
+
+.third{
+    background-color: rgb(184, 176, 76);
+}
+
+.fourth{
+    background-color: rgb(196, 123, 81);
+}
+
+.fifth{
+    background-color: rgb(43, 80, 122);
+}
+
+.sixth{
+    background-color: rgb(24, 24, 23);
+}
+
+.seventh{
+    background-color: rgb(53, 110, 103);
+}
+
+.eighth{
+    background-color: rgb(54, 31, 70);
+}
+
+.results{
+    height: 300px;
+    width: 300px;
+    background-color: #28282B;
+    color: white;
+    border: none;
+    box-shadow: 0px 1px 15px white;
+    font-size: 25px;
+    margin: 10px 0 30px 0;
+}
